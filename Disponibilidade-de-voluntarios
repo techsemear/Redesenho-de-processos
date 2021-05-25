@@ -1,0 +1,9 @@
+function DISPONIBILIDADE(periodo_desejado, horario_colocado) {
+  var horario_desejado = periodo_desejado.split(' ')[0];
+  var string_horario = horario_colocado.split(', ');
+  for (var i = 0; i<string_horario.length; i++){
+    if (horario_desejado == string_horario[i].replace(' ','').replace(' ',''))
+      return horario_desejado;
+  }
+  return;
+}
