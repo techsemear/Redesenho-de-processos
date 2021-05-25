@@ -1,0 +1,19 @@
+function enviado_sucess_ins(email_status) {
+  /*
+  Função responsável por verificar se o email X foi enviado com sucesso pelo Autocrat
+  */
+  
+  //Alterar
+  var mensagem_status = "Enviado";
+  
+  if(email_status != ''){
+    var doc_status = email_status.split(';')[3];
+    if (doc_status){
+      if(doc_status.split(':',1) == " Emails Sent")
+        return mensagem_status;
+    }
+    else if (email_status == 'enviado_pelo_modelo_antigo')
+      return mensagem_status;
+  }
+  return;
+}
