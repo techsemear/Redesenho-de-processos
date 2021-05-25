@@ -1,0 +1,13 @@
+function dias_corridos_ins(sht, data_envio, col_dias_corridos,i){
+  /*
+  Função responsável por contar os dias corridos desde a entrada do usuário no sistema e atualizar a informação na coluna Dias_corridos
+  */
+  var data_aux = data_envio.toString().split(' ', 4);
+  var data1 = new Date(data_aux[1]+' '+data_aux[2]+' '+data_aux[3]);
+  var today = new Date();
+  var data2 = new Date((today.getMonth()+1) + '-' + today.getDate() + '-' + today.getFullYear()) ;
+  var dif_tempo = Math.abs(data2.getTime() - data1.getTime());
+  var dif_dias = Math.ceil(dif_tempo / (1000 * 3600 * 24)); 
+  sht.getRange(col_dias_corridos+i).setValue(dif_dias);
+  return dif_dias;
+}
