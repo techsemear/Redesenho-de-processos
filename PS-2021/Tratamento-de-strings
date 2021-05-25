@@ -1,0 +1,29 @@
+
+  function nomes_pre() {
+    //alterar
+    var name_sht = 'Nome_aba'; // aba a ser modificada
+    var col_nome = 'A'; // coluna que contém a informação a ser tratada
+    var col_completo = 'AG'; // coluna que receberá as alterações
+
+
+    // Não alterar
+    var sht = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(name_sht);
+    var rng = sht.getDataRange();
+    var lastRow = rng.getLastRow();
+    var nome_string;
+    var nome_final;
+    var i;
+
+    // loop para limpar espaços entre as strings "Nome" e "Sobrenome" presentes na coluna "col_nome" na aba da planilha
+    for (i=10; i <= lastRow; i++) {
+      nome_string = sht.getRange(col_nome+i).getValue().split(" ");
+      nome_final = nome_string[0];
+      for (j=1;j<nome_string.length;j++) {
+          if (nome_string[j]!="")
+            nome_final = nome_final.concat(" ",nome_string[j]);
+      }
+
+      sht.getRange(col_completo+i).setValue(nome_final);
+      console.log(i+nome_final);
+    }
+  }
