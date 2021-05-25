@@ -1,0 +1,12 @@
+function data_especifica (data_escolhida, maior_que=false) {
+    //maior_que recebe 1 quando deseja-se que *A PARTIR* da data_escolhida, a célula contenha o valor verdadeiro
+    var today = new Date();
+    data_string = data_escolhida.split('-');
+    var data = new Date(data_string[2],data_string[1]-1,data_string[0]);
+    if (today == data)
+      return true;
+    else if (maior_que == true & today.getTime() > data.getTime())
+        return true;
+    else
+      return false;
+}
